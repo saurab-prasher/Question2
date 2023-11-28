@@ -15,8 +15,6 @@ const Sales = require("./models/Sale");
 const server = express();
 const isProduction = process.env.NODE_ENV === "production";
 
-const MongoStore = require("connect-mongo")(session);
-
 server.use(cors());
 server.disable("x-powered-by"); //Reduce fingerprinting
 server.use(cookieParser());
@@ -32,7 +30,6 @@ server.use(
       secure: isProduction, // Set to true in production
       domain: "https://calm-ruby-fox-tutu.cyclic.app",
     },
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
 
