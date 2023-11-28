@@ -30,8 +30,9 @@ server.use(
     saveUninitialized: true,
     cookie: {
       secure: isProduction, // Set to true in production
-      domain: "https://calm-ruby-fox-tutu.cyclic.app/",
+      domain: "https://calm-ruby-fox-tutu.cyclic.app",
     },
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
 
