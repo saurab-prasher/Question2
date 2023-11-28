@@ -13,15 +13,30 @@ const User = require("./models/User");
 const Sales = require("./models/Sale");
 
 const server = express();
+const isProduction = process.env.NODE_ENV === "production";
+
+const MongoStore = require("connect-mongo")(session);
 
 server.use(cors());
 server.disable("x-powered-by"); //Reduce fingerprinting
 server.use(cookieParser());
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
+
 server.use(
-  session({ secret: "notagoodsecret", resave: true, saveUninitialized: true })
+  session({
+    secret: "notagoodsecret",
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      secure: isProduction, // Set to true in production
+      domain: "https://calm-ruby-fox-tutu.cyclic.app/",
+    },
+  })
 );
+
+server.set("trust proxy", 1);
+
 server.use(flash());
 
 // Serve static files from the "public" directory
