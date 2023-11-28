@@ -185,7 +185,10 @@ server.get("/invoice/:id", async (req, res) => {
     const invoice = await Sales.findOne({ "Invoice ID": id });
 
     if (invoice) {
-      res.render("singleInvoice", { invoice: invoice });
+      res.render("singleInvoice", {
+        invoice: invoice,
+        user_id: req.session.user_id,
+      });
     } else {
       // Handle the case where no invoice is found
       res.render("invoiceNotFound");
