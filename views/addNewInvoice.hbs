@@ -1,0 +1,165 @@
+<div class="container mt-5">
+  <form class="form" method="post" action="/addInvoice">
+
+    <h1 class="mb-4 display-5">Create a New Invoice</h1>
+
+    <div class="form-group" style="max-width: 400px; margin: auto;">
+      <fieldset>
+        <legend>Customer Information</legend>
+
+        <label for="customerType">Customer Type:</label>
+        <select
+          class="form-control"
+          id="customerType"
+          name="Customer type"
+          required
+        >
+          <option value="Normal">Normal</option>
+          <option value="Member">Member</option>
+        </select>
+
+        <label for="productLine">Product Line:</label>
+        <select
+          class="form-control"
+          id="productLine"
+          name="Product line"
+          required
+        >
+          <option value="Home and lifestyle">Home and lifestyle</option>
+          <option value="Fashion accessories">Fashion accessories</option>
+          <option value="Electronic accessories">Electronic accessories</option>
+          <option value="Health and beauty">Health and beauty</option>
+          <option value="Sports and travel">Sports and travel</option>
+          <option value="Food and beverages">Food and beverages</option>
+        </select>
+      </fieldset>
+    </div>
+
+    <div class="form-group">
+      <fieldset>
+
+        <label class="mb-3" for="invoiceID">Invoice ID:</label>
+        <input
+          type="text"
+          class="form-control mb-4"
+          id="invoiceId"
+          name="Invoice ID"
+          required
+        />
+
+        <label for="branch">Branch:</label>
+        <select class="form-control" id="branch" name="Branch" required>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+        </select>
+
+        <label for="city">City:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="city"
+          name="City"
+          required
+        />
+
+        <label for="rating">Rating:</label>
+        <input
+          type="number"
+          class="form-control"
+          step="0.1"
+          id="rating"
+          name="Rating"
+          min="1"
+          max="10"
+          required
+        />
+
+        <label for="name">Product Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          required
+        />
+
+        <label for="image">Image URL:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="image"
+          name="image"
+          required
+        />
+
+        <label for="unitPrice">Unit Price:</label>
+        <input
+          type="number"
+          step="0.01"
+          class="form-control"
+          id="unitPrice"
+          name="Unit price"
+          required
+          value=""
+          oninput="calculateTotal()"
+        />
+
+        <label for="quantity">Quantity:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="quantity"
+          name="Quantity"
+          required
+          oninput="calculateTotal()"
+        />
+
+        <label for="tax">Tax 5%:</label>
+        <input
+          type="number"
+          step="0.01"
+          class="form-control"
+          id="tax"
+          name="Tax 5%"
+          value=""
+          required
+        />
+
+        <label for="total">Total:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="total"
+          name="Total"
+          value=""
+          readonly
+        />
+
+        <label for="date">Date:</label>
+        <input
+          type="date"
+          class="form-control"
+          id="date"
+          name="Date"
+          required
+          value="2019-02-16"
+        />
+
+        <label for="time">Time:</label>
+        <input
+          type="time"
+          class="form-control"
+          id="time"
+          name="Time"
+          required
+          value="10:00"
+        />
+      </fieldset>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+
+  </form>
+</div>

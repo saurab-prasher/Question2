@@ -1,0 +1,54 @@
+<h5 class="mt-4 display-6">{{getProperty invoice "name"}}</h5>
+<table class="table table-bordered table-striped mt-3">
+  <tbody>
+    <tr>
+      <td><strong>Invoice ID:</strong></td>
+      <td>{{getProperty invoice "Invoice ID"}}</td>
+    </tr>
+    <tr>
+      <td><strong>Branch:</strong></td>
+      <td>{{getProperty invoice "Branch"}}</td>
+    </tr>
+    <tr>
+      <td><strong>City:</strong></td>
+      <td>{{getProperty invoice "City"}}</td>
+    </tr>
+    <tr>
+      <td><strong>Customer type:</strong></td>
+      <td>{{getProperty invoice "Customer type"}}</td>
+    </tr>
+    <tr>
+      <td><strong>Product line:</strong></td>
+      <td>{{getProperty invoice "Product line"}}</td>
+    </tr>
+    <tr>
+      <td><strong>Unit price:</strong></td>
+      <td>${{getProperty invoice "Unit price"}}</td>
+    </tr>
+    <tr>
+      <td><strong>Quantity:</strong></td>
+      <td>{{getProperty invoice "Quantity"}}</td>
+    </tr>
+    <tr>
+      <td><strong>Tax 5%:</strong></td>
+      <td>${{getProperty invoice "Tax 5%"}}</td>
+    </tr>
+    <tr>
+      <td><strong>Total:</strong></td>
+      <td>${{getProperty invoice "Total"}}</td>
+    </tr>
+    <tr>
+      <td><strong>Date:</strong></td>
+      <td>{{getProperty invoice "Date"}}</td>
+    </tr>
+    <tr>
+      <td><strong>Time:</strong></td>
+      <td>{{getProperty invoice "Time"}}</td>
+    </tr>
+ 
+  
+      <td><strong>Rating:</strong></td>
+      <td>{{getProperty invoice "Rating"}}</td>
+    </tr>
+  </tbody>
+</table>

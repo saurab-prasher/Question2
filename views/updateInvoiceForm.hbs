@@ -1,0 +1,57 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Invoice form</title>
+  </head>
+
+  <body>
+
+    <form
+      action="/editInvoice"
+      method="post"
+      class="update-invoice-form container mt-5 form"
+      style="max-width: 400px; margin: auto;"
+    >
+      <h2 class="display-5">Update Invoice</h2>
+
+      <div class="form-group mt-2">
+        <label class="mt-2" for="invoiceID">Invoice ID:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="invoiceId"
+          name="Invoice ID"
+          required
+        />
+      </div>
+
+      <div class="form-group mt-2">
+        <label class="mt-2" for="newCustomerType">New Customer Type:</label>
+        <select
+          class="form-control"
+          id="newCustomerType"
+          name="newCustomerType"
+          required
+        >
+          <option value="Normal">Normal</option>
+          <option value="Member">Member</option>
+        </select>
+      </div>
+
+      <div class="form-group mt-2">
+        <label class="mt-2" for="newUnitPrice">New Unit Price:</label>
+        <input
+          type="number"
+          step="0.01"
+          class="form-control"
+          id="newUnitPrice"
+          name="newUnitPrice"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-4">Update Invoice</button>
+    </form>
+  </body>
+</html>

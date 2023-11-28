@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Document</title>
+  </head>
+
+  <body>
+
+    <form
+      class="container mt-5 form"
+      style="max-width: 400px; margin: auto;"
+      action="/deleteInvoice"
+      method="POST"
+    >
+      <h2 class="mb-4 display-5">Delete Product</h2>
+
+      <div class="form-group">
+        <label for="invoiceId" class="mb-2">Invoice ID:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="invoiceId"
+          name="Invoice ID"
+          placeholder="Enter Invoice ID"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-danger mt-4">Delete Invoice</button>
+    </form>
+  </body>
+</html>

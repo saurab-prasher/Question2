@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">Super Sales</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/allInvoices">All Invoices</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/searchInvoice">Search Invoice</a>
+        </li>
+        {{#if user_id}}
+          <li class="nav-item">
+            <a class="nav-link" href="/addInvoice">Add Invoice</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/deleteInvoice">Delete Invoice</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/editInvoice">Update Invoice</a>
+          </li>
+
+        {{/if}}
+
+        <!-- Login and Logout buttons at the end -->
+        <div class="ml-auto">
+          {{#if user_id}}
+            <form
+              class="nav-form"
+              style="margin-left: 5rem;"
+              action="/logout"
+              method="POST"
+            >
+              <button class="btn btn-link text-light">Log out</button>
+            </form>
+          {{else}}
+            <a class="btn btn-link text-light" href="/login">Log in</a>
+          {{/if}}
+        </div>
+
+      </ul>
+    </div>
+  </div>
+</nav>

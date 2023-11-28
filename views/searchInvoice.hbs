@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Invoice</title>
+  </head>
+
+  <body>
+
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form class="form" action="/searchInvoice" method="post">
+
+            <h1 class="mb-4 display-6">Search Invoice</h1>
+
+            <div class="form-group mb-3">
+              <label class="mb-3" for="invoiceID">Invoice ID:</label>
+              <input
+                type="text"
+                class="form-control mb-4"
+                id="invoiceId"
+                name="invoiceID"
+                required
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Search</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
