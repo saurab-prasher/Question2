@@ -1,23 +1,20 @@
 const express = require("express");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
 const exphbs = require("express-handlebars");
 const Handlebars = require("handlebars");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const path = require("path");
-const flash = require("express-flash");
 const { PORT, URI } = require("./config/index");
+const https = require("https");
+const fs = require("fs");
+const cors = require("cors");
 
 const User = require("./models/User");
 const Sales = require("./models/Sale");
 
 const server = express();
-const isProduction = process.env.NODE_ENV === "production";
-
 server.use(cors());
 server.disable("x-powered-by"); //Reduce fingerprinting
-server.use(cookieParser());
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
 
@@ -27,15 +24,10 @@ server.use(
     resave: true,
     saveUninitialized: true,
     cookie: {
-      secure: isProduction, // Set to true in production
-      domain: "https://calm-ruby-fox-tutu.cyclic.app",
+      secure: true,
     },
   })
 );
-
-server.set("trust proxy", 1);
-
-server.use(flash());
 
 // Serve static files from the "public" directory
 server.use(express.static(path.join(__dirname, "public")));
@@ -43,6 +35,11 @@ server.use(express.static(path.join(__dirname, "public")));
 // Set up Handlebars as the view engine with a custom file extension
 server.set("view engine", ".hbs");
 server.set("views", path.join(__dirname, "views"));
+
+const serverOptions = {
+  key: fs.readFileSync(path.join(__dirname, "/path/to/private-key.pem")),
+  cert: fs.readFileSync(path.join(__dirname, "/path/to/certificate.pem")),
+};
 
 server.engine(
   ".hbs",
@@ -72,8 +69,8 @@ async function main() {
 
     console.log("Database connection established");
 
-    server.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`);
+    https.createServer(serverOptions, server).listen(PORT, () => {
+      console.log(`Server running on https://localhost:${PORT}`);
     });
   } catch (error) {
     console.error("Error connecting to the database:", error);
@@ -112,7 +109,7 @@ server.post("/login", async (req, res) => {
     // res.render("index", { user: foundUser.first_name });
   } else {
     // Redirect the user to the login page with a flash message indicating authentication failure
-    req.flash("error", "Invalid email or password");
+
     res.redirect("/login");
   }
 });
