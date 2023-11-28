@@ -8,6 +8,7 @@ const { PORT, URI } = require("./config/index");
 const https = require("https");
 const fs = require("fs");
 const cors = require("cors");
+const MongoStore = require("connect-mongo");
 
 const User = require("./models/User");
 const Sales = require("./models/Sale");
@@ -17,12 +18,18 @@ server.use(cors());
 server.disable("x-powered-by"); //Reduce fingerprinting
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
+// Use MongoDB to store sessions
+const sessionStore = MongoStore.create({
+  mongoUrl: URI, // MongoDB connection URI
+  collection: "sessions", // Collection name for sessions
+});
 
 server.use(
   session({
     secret: "notagoodsecret",
     resave: true,
     saveUninitialized: true,
+    store: sessionStore, // Use the MongoStore for session storage
     cookie: {
       secure: true,
     },
