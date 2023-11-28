@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const path = require("path");
 const { PORT, URI } = require("./config/index");
-const https = require("https");
+// const https = require("https");
 const fs = require("fs");
 const cors = require("cors");
 const MongoStore = require("connect-mongo");
@@ -31,7 +31,7 @@ server.use(
     saveUninitialized: true,
     store: sessionStore, // Use the MongoStore for session storage
     cookie: {
-      secure: true,
+      // secure: true,
     },
   })
 );
@@ -43,10 +43,10 @@ server.use(express.static(path.join(__dirname, "public")));
 server.set("view engine", ".hbs");
 server.set("views", path.join(__dirname, "views"));
 
-const serverOptions = {
-  key: fs.readFileSync(path.join(__dirname, "/path/to/private-key.pem")),
-  cert: fs.readFileSync(path.join(__dirname, "/path/to/certificate.pem")),
-};
+// const serverOptions = {
+//   key: fs.readFileSync(path.join(__dirname, "/path/to/private-key.pem")),
+//   cert: fs.readFileSync(path.join(__dirname, "/path/to/certificate.pem")),
+// };
 
 server.engine(
   ".hbs",
@@ -76,7 +76,7 @@ async function main() {
 
     console.log("Database connection established");
 
-    https.createServer(serverOptions, server).listen(PORT, () => {
+    server.listen(PORT, () => {
       console.log(`Server running on https://localhost:${PORT}`);
     });
   } catch (error) {
